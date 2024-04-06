@@ -1,0 +1,198 @@
+<!-- This Calculator is maded by: Josiah 1st year BSIT Student -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator - Josiah</title>
+  <style>
+    /* This Calculator is maded by: Josiah 1st year BSIT Student */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .calculator {
+        width: 320px;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: black;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+      .calculator input[type="text"] {
+        width: calc(100% - 20px);
+        margin-bottom: 10px;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        border: none;
+        background-color: black;
+        font-size: 38px;
+        text-align: right;
+        color: white;
+        outline: none;
+
+      }
+      .calculator .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: -1;
+      }
+      .calculator input[type="button"] {
+        width: calc(23% - 5px);
+        padding: 20px 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 28px;
+        background-color: #343035;
+        color: white;
+        transition: background-color 0.3s;
+      }
+      .calculator input[type="button"].operator {
+        background-color: #ff9500;
+      }
+      .calculator input[type="button"].operator:hover {
+        background-color: #e68000;
+      }
+      .calculator input[type="button"].equal {
+        background-color: #fe9300;
+      }
+      .calculator input[type="button"].equal:hover {
+        background-color: #fe9300;
+      }
+      .calculator input[type="button"].clear {
+        background-color: #f0f0f0;
+        color: #393e46;
+      }
+      .calculator input[type="button"].clear:hover {
+        background-color: #a9a5a8;
+      }
+      .calculator input[type="button"].zero {
+          width: calc(49% - 5px);
+          border-radius: 50px;
+          
+        
+      }
+      .calculator button[type="button"].zero {
+          width: calc(49% - 5px);
+          border-radius: 50px;
+          font-size: 28px;
+          cursor: pointer;
+          font-size: 28px;
+          background-color: #343035;
+          color: white;
+          transition: background-color 0.3s;
+          border: none;
+      }
+      .calculator a {
+          margin-left: -80px;
+          cursor: pointer;
+          font-size: 28px;    
+          background-color: #343035;
+          color: white;
+          transition: background-color 0.3s;
+          text-decoration: none;
+          
+      }
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: black;
+      }
+      
+  </style>
+  
+</head>
+<body>
+    <div class="container">
+      <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="row">
+          <input type="button" value="AC" class="clear" onclick="clearDisplay()">
+          <input type="button" value="±" class="clear" onclick="toggleSign()">
+          <input type="button" value="%" class="clear" onclick="calculatePercentage()">
+          <input type="button" value="÷" class="operator" onclick="addToDisplay('/')">
+        </div>
+        <div class="row">
+          <input type="button" value="7" onclick="addToDisplay('7')">
+          <input type="button" value="8" onclick="addToDisplay('8')">
+          <input type="button" value="9" onclick="addToDisplay('9')">
+          <input type="button" value="×" class="operator" onclick="addToDisplay('*')">
+        </div>
+        <div class="row">
+            <input type="button" value="4" onclick="addToDisplay('4')">
+            <input type="button" value="5" onclick="addToDisplay('5')">
+            <input type="button" value="6" onclick="addToDisplay('6')">
+            <input type="button" value="-" class="operator" onclick="addToDisplay('-')">
+        </div>
+        <div class="row">
+            <input type="button" value="1" onclick="addToDisplay('1')">
+            <input type="button" value="2" onclick="addToDisplay('2')">
+            <input type="button" value="3" onclick="addToDisplay('3')">
+            <input type="button" value="+" class="operator" onclick="addToDisplay('+')">
+        </div>
+        <div class="row">
+            <button type="button" class="zero" onclick="addToDisplay('0')"><a class="zero">0</a></button>
+            <input type="button" value="."  class="dot"onclick="addToDisplay('.')">
+            <input type="button" value="=" class="equal" onclick="calculate()">
+        </div>
+      </div>
+
+        <footer>Created by Josiah</footer>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+          document.getElementById('display').value += value;
+        }
+        
+        function calculate() {
+          var imissyou = document.getElementById('display').value;
+          var result;
+          if (imissyou = '5+5') {
+              result = "imissyouu love :(";
+          } else {
+            result = (imissyou);
+          }
+          document.getElementById('display').value = result;
+        }
+
+        function clearDisplay() {
+          document.getElementById('display').value = '';
+        }
+        
+        function toggleSign() {
+          let displayValue = document.getElementById('display').value;
+          if (displayValue !== '') {
+            if (displayValue.charAt(0) === '-') {
+              document.getElementById('display').value = displayValue.slice(1);
+            } else {
+              document.getElementById('display').value = '-' + displayValue;
+            }
+          }
+        }
+        
+        function calculatePercentage() {
+          let displayValue = document.getElementById('display').value;
+          if (displayValue !== '') {
+            document.getElementById('display').value = String(parseFloat(displayValue) / 100);
+          }
+        }
+    </script>
+    
+</body>
+</html>
